@@ -1,0 +1,67 @@
+API : Application Programming Interface 
+
+
+FrontEnd     Request                        Backend                  Database
+Browser         =>     API Call    =>       Server        <=>        Database
+React JS        <=                 <=       Node JS                  MySQL / Mongo
+                                Response
+
+API Call can be sent through 4 HTTP Methods 
+1. GET 
+        Request:
+            API URL *
+            Headers * 
+            HTTP Method * 
+            URL Parameters
+        Response 
+            Status Code *
+            Response Data *
+2. POST 
+        Request:
+            API URL *
+            Headers * 
+            HTTP Method * 
+            Request.Body *
+        Response:
+            Status Code *
+            Response Data *
+3. PUT
+        Request:
+            API URL *
+            Headers * 
+            HTTP Method * 
+            URL Parameters * 
+            Request.Body * 
+        Response:
+            Status Code *
+            Response Data *
+4. DELETE
+        Request:
+            API URL *
+            Headers * 
+            HTTP Method * 
+            URL Parameters *
+        Response:
+            Status Code *
+            Response Data
+
+
+200 - 299 : Success
+400 - 499 : Client side error 
+500 - 599 : Server side error 
+
+200 : OK 
+201 : Created 
+400 : Client Side Error
+401 : Unauthorised 
+404 : Page not Found / Forbidden 
+500 : Internal Server Error 
+
+Interview Question 
+Authorisation vs Authentication 
+
+SOAP API 
+Parses XML Data 
+
+REST API 
+Parses JSON Data 
