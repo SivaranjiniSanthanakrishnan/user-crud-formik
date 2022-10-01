@@ -45,6 +45,13 @@ function App() {
     const selectedData = userData.filter((row) => row.id === id)[0];
     setFormData({ ...selectedData });
   };
+  const handleDelete = async (id) => {
+    const response = await axios.delete(
+      `https://61fcdb8ff62e220017ce41c1.mockapi.io/users/${id}`
+    );
+    const unDeletedData = userData.filter((row) => row.id !== id);
+    setUserData(unDeletedData);
+  };
   const validateForm = (formDataToValidate) => {
     var error = {};
     if (formDataToValidate.name === "") error.name = "Name is Required";
@@ -94,6 +101,7 @@ function App() {
           handleBlur,
           handleSubmit,
           isSubmitting,
+          resetForm,
           /* and other goodies */
         }) => (
           <Box
@@ -196,10 +204,12 @@ function App() {
               {touched.courses && errors.courses}
             </span>
             <br />
-            <Button variant="contained" type="submit">
+            <Button variant="contained" type="submit" disabled={isSubmitting}>
               Save
             </Button>
-            <Button variant="contained">Reset</Button>
+            <Button variant="contained" onClick={resetForm}>
+              Reset
+            </Button>
           </Box>
         )}
       </Formik>
@@ -233,7 +243,9 @@ function App() {
                   <Button variant="text" onClick={() => onPopulateData(row.id)}>
                     Edit
                   </Button>
-                  <Button variant="text">Delete</Button>
+                  <Button variant="text" onClick={() => handleDelete(row.id)}>
+                    Delete
+                  </Button>
                 </TableCell>
               </TableRow>
             ))}
